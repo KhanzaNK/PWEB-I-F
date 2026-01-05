@@ -11,10 +11,10 @@ class ProductController extends Controller
         $products = Product::all();
         $cart = session()->get('cart', []);
 
-        // Kelompokkan produk berdasarkan jenis
+
         $groupedProducts = $products->groupBy('jenis');
 
-        // Kirim ke view
+
         return view('products.index', compact('groupedProducts', 'cart'));
     }
 

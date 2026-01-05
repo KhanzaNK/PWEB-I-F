@@ -45,14 +45,14 @@
     </div>
 
 </div>
-<!-- KATEGORI SAMPAH -->
+
 <div class="kategori-wrapper mx-auto mt-5">
 
     <div class="row g-4 justify-content-center">
 
         <div class="col-12 col-md-4 d-flex justify-content-center">
             <div class="card kategori-card border-success border-2 rounded-4 glow-soft glow-organik">
-                <!-- ORGANIK -->
+
                 <div class="mb-3">
                     <span class="fs-1 text-success">🍃</span>
                 </div>
@@ -122,7 +122,7 @@
 
     </div>
 </div>
-<!-- CTA JUAL SAMPAH -->
+
 <div class="mt-5 p-5 rounded-4 text-center"
      style="background: linear-gradient(135deg, #ecfdf3, #f0fdf9);">
 
@@ -146,7 +146,7 @@
         Klik Disini →
     </a>
 
-    <!-- STEP -->
+
     <div class="row mt-5">
         <div class="col-md-4">
             <h3 class="text-success fw-bold">1</h3>
