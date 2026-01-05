@@ -2,233 +2,406 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title', 'EcoWaste') - Laravel</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
+    <title>@yield('title', 'EcoWaste')</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
-        :root {
-            --brand-green: #10B981;
-            --muted-gray: #f3f4f6;
-            --text-default: #0f172a;
-            --card-border: rgba(15,23,42,0.06);
-        }
-
-        body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ffffff;
-            color: var(--text-default);
-            min-height: 100vh;
-        }
-
-        .navbar {
-            background: rgba(255, 255, 255, 0.5);
-            border-bottom: 1px solid rgba(0,0,0,0.02);
-            box-shadow: none;
-            padding: 0.75rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1050;
-            transition: box-shadow 200ms ease, padding 200ms ease, backdrop-filter 200ms ease;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .navbar.is-sticky {
-            box-shadow: 0 6px 20px rgba(2,6,23,0.08);
-            padding: 0.45rem 0;
-            background-color: rgba(255,255,255,0.7);
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--text-default) !important;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .container {
-            max-width: 1200px;
-        }
-
-        .nav-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .nav-center .nav-link {
-            color: #111827;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-        }
-
-        .nav-center .nav-link.active {
-            color: var(--brand-green);
-            border-bottom: 3px solid var(--brand-green);
-            border-radius: 0;
-            padding-bottom: 0.5rem;
-        }
-
-        .login-btn {
-            border: 1px solid var(--brand-green);
-            color: var(--brand-green);
-            border-radius: 8px;
-            padding: 0.4rem 0.9rem;
-            font-weight: 600;
-            background: transparent;
-        }
-
-        .login-btn:hover {
-            background: rgba(16,185,129,0.06);
-        }
-
-        footer {
-            background-color: #071126; /* deep navy */
-            color: #cbd5e1;
-            padding: 3.5rem 0;
-            margin-top: 3rem;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2.5rem;
-        }
-
-        .footer h5 {
-            color: #ffffff;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .footer p, .footer a, .footer li {
-            color: #9aa6b8;
-            font-size: 0.92rem;
-            line-height: 1.8;
-            margin: 0;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.03);
-            color: #e6eef8;
-            margin-right: 0.5rem;
-        }
-
-        .footer-bottom {
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.03);
-            padding-top: 1.25rem;
-            color: #8b97a8;
-            font-size: 0.85rem;
-            text-align: center;
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 
-    @yield('css')
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card-stat {
+            background: #ecfdf3;
+            border: none;
+            border-radius: 12px;
+        }
+        .text-green {
+            color: #22c55e;
+        }
+        .nav-link.active {
+            border-bottom: 2px solid #22c55e;
+            font-weight: 600;
+        }
+
+        .glow-soft {
+            transition: all 0.3s ease;
+        }
+
+        .glow-organik:hover {
+            box-shadow: 
+                0 0 0 2px #22c55e,
+                0 10px 30px rgba(34, 197, 94, 0.45);
+            transform: translateY(-8px);
+        }
+
+        .glow-anorganik:hover {
+            box-shadow: 
+                0 0 0 2px #3b82f6,
+                0 10px 30px rgba(59, 130, 246, 0.45);
+            transform: translateY(-8px);
+        }
+
+        .glow-b3:hover {
+            box-shadow: 
+                0 0 0 2px #ef4444,
+                0 10px 30px rgba(239, 68, 68, 0.45);
+            transform: translateY(-8px);
+        }
+        .kategori-wrapper {
+            max-width: 1100px; 
+        }
+
+        .kategori-card {
+            width: 100%;
+            max-width: 320px; 
+            padding: 24px;
+            text-align: center;
+        }
+
+
+    </style>
+
+    <style>
+        .footer-dark {
+            background: linear-gradient(180deg, #0f172a, #020617);
+            color: #e5e7eb;
+        }
+
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #cbd5f5;
+        }
+
+        .footer-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-list li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #cbd5f5;
+        }
+
+        .footer-list li:hover {
+            color: #22c55e;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 14px;
+            color: #cbd5f5;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #22c55e;
+            color: #ffffff;
+        }
+        </style>
+        <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar Sticky */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745 !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand i {
+            font-size: 2rem;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: #333;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #28a745 !important;
+            border-bottom: 2px solid #28a745;
+        }
+
+        .btn-login {
+            border: 2px solid #28a745;
+            color: #28a745;
+            padding: 8px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #28a745;
+            color: white;
+        } */
+
+        /* Hero Section */
+        .hero-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #212529;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .btn-jual {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-jual:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        /* Stats Card */
+        .stats-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+
+        .stats-title {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #212529;
+        }
+
+        .stats-subtitle {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        /* Section */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #212529;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .product-icon i {
+            font-size: 2.5rem;
+            color: #2196F3;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #212529;
+        }
+
+        .product-price-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #212529;
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #28a745;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #495057;
+            margin-top: 40px;
+            padding-top: 20px;
+            text-align: center;
+            color: #adb5bd;
+        }
+
+        .keuntungan-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .keuntungan-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            height: 100%;
+            transition: all 0.3s;
+        }
+
+        .keuntungan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .keuntungan-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .keuntungan-icon i {
+            font-size: 2rem;
+            color: #29cf55ff;
+        }
+
+        </style>
+
+
+    @stack('styles')
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3v6h6" stroke="var(--brand-green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 21v-6h-6" stroke="var(--brand-green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                EcoWaste
-            </a>
 
-            <div class="nav-center">
-                <ul class="navbar-nav d-flex flex-row align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('jual.form') }}">JUAL</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">TOKO</a>
-                    </li>
-                </ul>
-            </div>
+@include('layouts.navbar')
 
-            <div class="ms-auto d-flex align-items-center">
-                <a href="#" class="btn login-btn">Login</a>
-            </div>
-        </div>
-    </nav>
+<div class="container mt-5">
+    @yield('content')
+</div>
 
-    <!-- Main Content -->
-    <main class="py-5">
-        @yield('content')
-    </main>
+@include('layouts.footer')
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <div>
-                <h5>Tentang Kami</h5>
-                <p>Platform pengelolaan sampah yang membantu masyarakat untuk menjual sampah dan berkontribusi pada lingkungan yang lebih bersih.</p>
-            </div>
-
-            <div>
-                <h5>Layanan</h5>
-                <ul style="list-style:none;padding:0;margin:0">
-                    <li>Jual Sampah</li>
-                    <li>Toko Daur Ulang</li>
-                    <li>Informasi Sampah</li>
-                    <li>Edukasi</li>
-                </ul>
-            </div>
-
-            <div>
-                <h5>Kontak</h5>
-                <p>+62 858-9210-0132</p>
-                <p>info@ecowaste.id</p>
-                <p>Sleman, Indonesia</p>
-            </div>
-
-            <div>
-                <h5>Ikuti Kami</h5>
-                <div style="display:flex;align-items:center">
-                    <a class="social-btn" href="https://www.instagram.com/ecowaste.co/"><i class="fab fa-instagram"></i></a>
-                    <a class="social-btn" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="social-btn" href=""><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">&copy; 2026 EcoWaste - Platform Jual Beli Sampah & Produk Ramah Lingkungan</div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        // toggle sticky class for navbar when scrolling
-        (function () {
-            var nav = document.querySelector('.navbar');
-            if (!nav) return;
-            function onScroll() {
-                if (window.scrollY > 20) nav.classList.add('is-sticky'); else nav.classList.remove('is-sticky');
-            }
-            document.addEventListener('scroll', onScroll, { passive: true });
-            onScroll();
-        })();
-    </script>
-
-    @yield('js')
+@stack('scripts')
 </body>
 </html>
