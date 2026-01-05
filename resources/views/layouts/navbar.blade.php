@@ -16,6 +16,6 @@
             </li>
         </ul>
 
-        <a href="#" class="btn btn-outline-success">Login</a>
+        <a href="/login" class="btn btn-outline-success">Login</a>
     </div>
 </nav>
