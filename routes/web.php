@@ -10,7 +10,15 @@ Route::get('/', function () {
 });
 
 Route::get('/jual', function () {
-    return view('jual');
+    $jenisSampah = collect([
+        (object)[ 'jenis_sampah' => 'Plastik', 'harga_per_kg' => 3000, 'icon' => 'fas fa-recycle' ],
+        (object)[ 'jenis_sampah' => 'Kertas', 'harga_per_kg' => 2500, 'icon' => 'fas fa-file-alt' ],
+        (object)[ 'jenis_sampah' => 'Logam',  'harga_per_kg' => 8000, 'icon' => 'fas fa-cogs' ],
+        (object)[ 'jenis_sampah' => 'Kaca',   'harga_per_kg' => 4000, 'icon' => 'fas fa-wine-glass-alt' ],
+        (object)[ 'jenis_sampah' => 'Organik', 'harga_per_kg' => 1000, 'icon' => 'fas fa-seedling' ],
+    ]);
+
+    return view('jual', compact('jenisSampah'));
 });
 
 

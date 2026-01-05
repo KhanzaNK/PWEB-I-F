@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
@@ -101,7 +102,19 @@
             color: #cbd5f5;
         }
 
+        .footer-list li a {
+            margin-bottom: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            color: #cbd5f5;
+        }
+
         .footer-list li:hover {
+            color: #22c55e;
+            cursor: pointer;
+        }
+
+        .footer-list li a:hover {
             color: #22c55e;
             cursor: pointer;
         }
