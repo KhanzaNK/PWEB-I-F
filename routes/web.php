@@ -4,8 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormPenjualanController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('halaman_home');
 });
+
+Route::get('/jual', function () {
+    return view('jual');
+});
+
 
 // Routes untuk Form Penjualan
 Route::prefix('jual')->group(function () {
