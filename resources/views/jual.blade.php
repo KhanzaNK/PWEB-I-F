@@ -1,5 +1,5 @@
-@extends ('layout.layout')
-@section ('title', 'EcoWaste - Jual Beli sampah')
+@extends ('layouts.app')
+@section ('title', 'EcoWaste')
 @section ('content')
     <section class="hero-section">
         <div class= "container">

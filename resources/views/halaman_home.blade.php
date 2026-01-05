@@ -142,7 +142,7 @@
         mendapatkan penghasilan tambahan.
     </p>
 
-    <a href="#jual" class="btn btn-success px-4 py-2 mt-3">
+    <a href="/jual" class="btn btn-success px-4 py-2 mt-3">
         Klik Disini →
     </a>
 

@@ -6,10 +6,10 @@
 
         <ul class="navbar-nav mx-auto gap-4">
             <li class="nav-item">
-                <a class="nav-link active" href="/">HOME</a>
+                <a class="nav-link" href="/">HOME</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">JUAL</a>
+                <a class="nav-link" href="/jual">JUAL</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">TOKO</a>
