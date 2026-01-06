@@ -12,6 +12,7 @@ class JualSampah extends Model
     protected $table = 'jual_sampah';
 
     protected $fillable = [
+        'user_id',
         'jenis_sampah',
         'berat',
         'total_harga',
@@ -21,4 +22,9 @@ class JualSampah extends Model
         'berat' => 'float',
         'total_harga' => 'float',
     ];
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
