@@ -25,8 +25,6 @@ class DashboardController extends Controller
         // Riwayat penjualan terakhir
         $riwayat = JualSampah::latest()->limit(5)->get();
 
-         dd($riwayat);
-
         return view('dashboard', compact(
             'totalSampahKg',
             'totalTransaksi',

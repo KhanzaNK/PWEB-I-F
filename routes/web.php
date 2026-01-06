@@ -7,16 +7,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\JualController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
-
-
-Route::get('/', function () {
-    if (auth()->check()) {
-        return redirect('/dashboard');
-    }
-    return view('halaman_home');
-});
-
+Route::get('/', fn() => view('halaman_home'))->middleware('guest');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 // Routes untuk Form Penjualan
 Route::middleware('auth')->prefix('jual')->group(function () {
@@ -28,10 +20,6 @@ Route::middleware('auth')->prefix('jual')->group(function () {
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('login', [LoginController::class, 'login'])->name('login');
-
-Route::get('/dashboard', function () {
-    return view('dashboard'); // Langsung memanggil view
-})->middleware('auth');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

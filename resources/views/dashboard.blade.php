@@ -47,22 +47,52 @@
     </div>
 </div>
 
-<tbody>
-@forelse ($riwayat as $item)
-    <tr>
-        <td>{{ $item->created_at->format('d/m/Y') }}</td>
-        <td>{{ $item->jenis_sampah }}</td>
-        <td>{{ $item->berat }} kg</td>
-        <td><span class="badge bg-warning">Diproses</span></td>
-    </tr>
-@empty
-    <tr>
-        <td colspan="4" class="text-center text-muted">
-            Belum ada penjualan
-        </td>
-    </tr>
-@endforelse
-</tbody>
+<div class="card p-4 mt-4">
+    <h5 class="fw-bold mb-3">🧾 Riwayat Penjualan Terakhir</h5>
+
+    @forelse ($riwayat as $item)
+        <div class="d-flex justify-content-between align-items-center
+                    border rounded-3 p-3 mb-3">
+
+            <div class="d-flex align-items-center gap-3">
+                {{-- ICON JENIS --}}
+                <div class="fs-3">
+                    @switch($item->jenis_sampah)
+                        @case('Plastik') 🧴 @break
+                        @case('Logam') 🔩 @break
+                        @case('Kertas') 📄 @break
+                        @case('Kaca') 🧪 @break
+                        @case('Organik') 🍃 @break
+                        @default ♻
+                    @endswitch
+                </div>
+
+                {{-- INFO --}}
+                <div>
+                    <div class="fw-semibold">
+                        {{ $item->jenis_sampah }}
+                        <span class="text-muted">• {{ $item->berat }} kg</span>
+                    </div>
+                    <small class="text-muted">
+                        {{ $item->created_at->format('d M Y') }}
+                    </small>
+                </div>
+            </div>
+
+            {{-- STATUS --}}
+            <span class="badge bg-warning text-dark px-3 py-2">
+                Diproses
+            </span>
+        </div>
+    @empty
+        <div class="text-center text-muted py-4">
+            <p class="mb-1">Belum ada riwayat penjualan</p>
+            <small>Mulai jual sampah untuk melihat riwayat di sini</small>
+        </div>
+    @endforelse
+</div>
+
+
 
 
 
