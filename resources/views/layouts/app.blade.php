@@ -60,7 +60,8 @@
             transform: translateY(-8px);
         }
         .kategori-wrapper {
-            max-width: 1100px; 
+            max-width: 1100px;
+            padding: 20px;
         }
 
         .kategori-card {

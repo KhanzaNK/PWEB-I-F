@@ -5,10 +5,10 @@
         </a>
 
         <ul class="navbar-nav mx-auto gap-4">
+            @auth
             <li class="nav-item">
                 <a class="nav-link" href="/">HOME</a>
             </li>
-            @auth
             <li class="nav-item">
                 <a class="nav-link" href="/jual">JUAL</a>
             </li>
@@ -23,7 +23,7 @@
                 Halo, {{ auth()->user()->name }} 👋
             </span>
         @endauth
-       
+
         @auth
         <form action="{{ route('logout') }}" method="POST">
             @csrf
