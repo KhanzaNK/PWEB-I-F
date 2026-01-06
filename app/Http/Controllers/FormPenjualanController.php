@@ -8,20 +8,16 @@ use Illuminate\Http\Request;
 
 class FormPenjualanController extends Controller
 {
-    /**
-     * Tampilkan form penjualan
-     */
+ 
     public function index()
     {
         return view('jual.form');
     }
 
-    /**
-     * Simpan data jual sampah
-     */
+
     public function storeSampah(Request $request)
     {
-        // Validasi input
+
         $validated = $request->validate([
             'jenis_sampah' => 'required|string|in:Plastik,Logam,Kertas,Kaca,Organik',
             'berat' => 'required|numeric|min:0.1|max:1000',
@@ -34,7 +30,7 @@ class FormPenjualanController extends Controller
             'berat.max' => 'Berat maksimal 1000 kg',
         ]);
 
-        // Harga per kg (hardcode)
+
         $hargaPerKg = [
             'Plastik' => 5000,
             'Logam' => 15000,
@@ -43,10 +39,10 @@ class FormPenjualanController extends Controller
             'Organik' => 1000,
         ];
 
-        // Hitung total harga
+
         $totalHarga = $validated['berat'] * $hargaPerKg[$validated['jenis_sampah']];
 
-        // Simpan ke database
+
         JualSampah::create([
             'user_id' => auth()->id(),
             'jenis_sampah' => $validated['jenis_sampah'],
@@ -57,12 +53,10 @@ class FormPenjualanController extends Controller
         return back()->with('success', 'Data penjualan sampah berhasil disimpan!');
     }
 
-    /**
-     * Simpan data jual produk
-     */
+
     public function storeProduk(Request $request)
     {
-        // Validasi input
+
         $validated = $request->validate([
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'jenis_produk' => 'required|string',
@@ -87,10 +81,10 @@ class FormPenjualanController extends Controller
             'stok.max' => 'Stok maksimal 10000 unit',
         ]);
 
-        // Upload foto ke storage
+
         $fotoPath = $request->file('foto')->store('produk', 'public');
 
-        // Simpan ke database
+
         JualProduk::create([
             'user_id' => auth()->id(),
             'foto' => $fotoPath,
