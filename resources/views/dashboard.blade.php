@@ -164,6 +164,31 @@
     </div>
 </div>
 
+<div class="row mt-4 g-3">
+    <div class="col-md-4">
+        <div class="card p-3">
+            <small class="text-muted">Total Stok Produk</small>
+            <h4 class="fw-bold">{{ $totaljual ?? 0 }} unit</h4>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <small class="text-muted">Total Transaksi</small>
+            <h4 class="fw-bold">{{ $totalproduk ?? 0 }}</h4>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <small class="text-muted">Estimasi Pendapatan</small>
+            <h4 class="fw-bold text-success">
+                Rp {{ number_format($pendapatanProduk ?? 0) }}
+            </h4>
+        </div>
+    </div>
+</div>
+
 <div class="card p-4 mt-4">
     <h5 class="fw-bold mb-3">🧾 Riwayat Penjualan Terakhir</h5>
 
@@ -192,6 +217,38 @@
                     </div>
                     <small class="text-muted">
                         {{ $item->created_at->format('d M Y') }}
+                    </small>
+                </div>
+            </div>
+
+            {{-- STATUS --}}
+            <span class="badge bg-warning text-dark px-3 py-2">
+                Diproses
+            </span>
+        </div>
+    @empty
+        <div class="text-center text-muted py-4">
+            <p class="mb-1">Belum ada riwayat penjualan</p>
+            <small>Mulai jual sampah untuk melihat riwayat di sini</small>
+        </div>
+    @endforelse
+    @forelse ($riwayatproduk as $itemproduk)
+        <div class="d-flex justify-content-between align-items-center
+                    border rounded-3 p-3 mb-3">
+
+            <div class="d-flex align-items-center gap-3">
+                {{-- ICON JENIS --}}
+                <div class="fs-3">
+                </div>
+
+                {{-- INFO --}}
+                <div>
+                    <div class="fw-semibold">
+                        {{ $itemproduk->jenis_produk }}
+                        <span class="text-muted">• {{ $itemproduk->stok }} unit</span>
+                    </div>
+                    <small class="text-muted">
+                        {{ $itemproduk->created_at->format('d M Y') }}
                     </small>
                 </div>
             </div>
