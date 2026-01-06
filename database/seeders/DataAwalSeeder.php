@@ -14,7 +14,7 @@ class DataAwalSeeder extends Seeder
      */
     public function run(): void
     {
-                JualSampah::create([
+        JualSampah::create([
             'user_id' => 1,
             'jenis_sampah' => 'Plastik',
             'berat' => 2.5,
@@ -29,22 +29,5 @@ class DataAwalSeeder extends Seeder
         ]);
 
         // sample jual_produk entries
-        JualProduk::create([
-            'user_id' => 1,
-            'foto' => 'produk1.jpg',
-            'jenis_produk' => 'Kerajinan Daur Ulang',
-            'nama_produk' => 'tas',
-            'harga' => 15000,
-            'stok' => 10,
-        ]);
-
-        JualProduk::create([
-            'user_id' => 1,
-            'foto' => 'produk2.jpg',
-            'jenis_produk' => 'Aksesoris',
-            'nama_produk' => 'Gelang',
-            'harga' => 5000,
-            'stok' => 25,
-        ]);
     }
 }

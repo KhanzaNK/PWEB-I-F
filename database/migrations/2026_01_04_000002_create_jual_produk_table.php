@@ -8,9 +8,6 @@ return new class extends Migration
 {
     public function up(): void
     {
-
-    }
-
         Schema::create('jual_produk', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
@@ -28,11 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //Schema::table('jual_produk', function (Blueprint $table) {
-            // optional: hapus kolom jika migration di-rollback
-            //if (Schema::hasColumn('jual_produk', 'user_id')) {
-                //$table->dropColumn('user_id');
-            //}
-        //});
+        Schema::dropIfExists('jual_produk');
     }
 };

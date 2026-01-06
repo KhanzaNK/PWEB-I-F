@@ -38,11 +38,6 @@
             <!-- Sosial Media -->
             <div class="col-md-3 mb-4">
                 <h6 class="footer-title">Ikuti Kami</h6>
-                <div class="d-flex gap-3 mt-2">
-                    <span class="social-icon">📸</span>
-                    <span class="social-icon">📘</span>
-                    <span class="social-icon">🐦</span>
-                </div><br>
                 <ul class="footer-list">
                     <li>✉ info@ecowaste.id</li>
                     <li>📍 Yogyakarta, Indonesia</li>
