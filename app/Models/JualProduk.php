@@ -24,4 +24,9 @@ class JualProduk extends Model
         'harga' => 'float',
         'stok' => 'integer',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
