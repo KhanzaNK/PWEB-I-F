@@ -10,20 +10,22 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Total berat sampah
-        $totalSampahKg = JualSampah::sum('berat');
+        $userId = Auth::id();
 
-        // Total transaksi sampah
-        $totalTransaksi = JualSampah::count();
+        // Total berat sampah milik user
+        $totalSampahKg = JualSampah::where('user_id', $userId)->sum('berat');
 
-        // Total pendapatan sampah
-        $pendapatanSampah = JualSampah::sum('total_harga');
+        // Total transaksi sampah milik user
+        $totalTransaksi = JualSampah::where('user_id', $userId)->count();
 
-        // Total produk
-        $totalProduk = JualProduk::count();
+        // Total pendapatan sampah milik user
+        $pendapatanSampah = JualSampah::where('user_id', $userId)->sum('total_harga');
 
-        // Riwayat penjualan terakhir
-        $riwayat = JualSampah::latest()->limit(5)->get();
+        // Total produk milik user
+        $totalProduk = JualProduk::where('user_id', $userId)->count();
+
+        // Riwayat penjualan terakhir milik user
+        $riwayat = JualSampah::where('user_id', $userId)->latest()->limit(5)->get();
 
         return view('dashboard', compact(
             'totalSampahKg',

@@ -34,10 +34,10 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 // ================= TOKO =================
-Route::get('/toko', [ProductController::class, 'index'])->name('products.index');
+Route::get('/toko', [ProductController::class, 'index'])->name('products.index')->middleware('auth');
 
 // ================= KERANJANG (SESSION) =================
-Route::prefix('cart')->group(function () {
+Route::middleware('auth')->prefix('cart')->group(function () {
     Route::get('/add/{id}', [CartController::class, 'add'])->name('cart.add');
     Route::get('/increase/{id}', [CartController::class, 'increase'])->name('cart.increase');
     Route::get('/decrease/{id}', [CartController::class, 'decrease'])->name('cart.decrease');

@@ -37,7 +37,7 @@
 
                                 <div class="card-footer bg-white">
                                     <a href="{{ route('cart.add', $p->id) }}"
-                                       class="btn btn-success btn-sm w-100">
+                                        class="btn btn-success btn-sm w-100">
                                         + Tambah
                                     </a>
                                 </div>

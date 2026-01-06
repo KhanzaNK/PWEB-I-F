@@ -27,22 +27,17 @@
             <div class="col-md-3 mb-4">
                 <h6 class="footer-title">Kontak</h6>
                 <ul class="footer-list">
-                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/"> karel</a></li>
+                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/im.kayyz"> im.kayyz</a></li>
                     <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/amrirasyid01"> amrirasyid01</a></li>
-                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/"> faudan</a></li>
-                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/"> khanza</a></li>
-                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/"> tristan</a></li>
+                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/fdhananmz"> fdhananmz</a></li>
+                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/khanza_nibras"> khanza_nibras</a></li>
+                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/athl_syh"> athl_syh</a></li>
                 </ul>
             </div> 
 
             <!-- Sosial Media -->
             <div class="col-md-3 mb-4">
                 <h6 class="footer-title">Ikuti Kami</h6>
-                <div class="d-flex gap-3 mt-2">
-                    <span class="social-icon">📸</span>
-                    <span class="social-icon">📘</span>
-                    <span class="social-icon">🐦</span>
-                </div><br>
                 <ul class="footer-list">
                     <li>✉ info@ecowaste.id</li>
                     <li>📍 Yogyakarta, Indonesia</li>
