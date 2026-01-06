@@ -44,6 +44,7 @@ class FormPenjualanController extends Controller
 
 
         JualSampah::create([
+            'user_id' => auth()->id(),
             'jenis_sampah' => $validated['jenis_sampah'],
             'berat' => $validated['berat'],
             'total_harga' => $totalHarga,
@@ -85,6 +86,7 @@ class FormPenjualanController extends Controller
 
 
         JualProduk::create([
+            'user_id' => auth()->id(),
             'foto' => $fotoPath,
             'jenis_produk' => $validated['jenis_produk'],
             'nama_produk' => $validated['nama_produk'],

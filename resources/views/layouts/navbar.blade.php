@@ -8,14 +8,33 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">HOME</a>
             </li>
+            @auth
             <li class="nav-item">
                 <a class="nav-link" href="/jual">JUAL</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/index">TOKO</a>
             </li>
+            @endauth
         </ul>
 
-        <a href="/login" class="btn btn-outline-success">Log out</a>
+        @auth
+            <span class="me-3 fw-semibold">
+                Halo, {{ auth()->user()->name }} 👋
+            </span>
+        @endauth
+       
+        @auth
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-outline-danger">
+                Logout
+            </button>
+        </form>
+        @endauth
+
+        @guest
+        <a href="/login" class="btn btn-outline-success">Login</a>
+        @endguest
     </div>
 </nav>

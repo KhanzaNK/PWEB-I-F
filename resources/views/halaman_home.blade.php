@@ -142,25 +142,18 @@
         mendapatkan penghasilan tambahan.
     </p>
 
-    <a href="/jual" class="btn btn-success px-4 py-2 mt-3">
-        Klik Disini →
-    </a>
+    @guest
+        <a href="/login" class="btn btn-success px-4 py-2 mt-3">
+            Mulai Sekarang →
+        </a>
+    @endguest
 
-
-    <div class="row mt-5">
-        <div class="col-md-4">
-            <h3 class="text-success fw-bold">1</h3>
-            <p class="text-muted">Pilah Sampah</p>
-        </div>
-        <div class="col-md-4">
-            <h3 class="text-success fw-bold">2</h3>
-            <p class="text-muted">Hubungi Kami</p>
-        </div>
-        <div class="col-md-4">
-            <h3 class="text-success fw-bold">3</h3>
-            <p class="text-muted">Dapatkan Uang</p>
-        </div>
-    </div>
+    @auth
+        <a href="/dashboard" class="btn btn-success px-4 py-2 mt-3">
+            Masuk Dashboard →
+        </a>
+    @endauth
+    
 </div>
 
 @endsection

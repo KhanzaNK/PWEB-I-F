@@ -24,7 +24,9 @@ class LoginController extends Controller
             'email'    => $request->email,
             'password' => $request->password,
         ])) {
-            return redirect()->intended('/');
+            $request->session()->regenerate();
+
+            return redirect()->intended('/dashboard');
         }
 
         return back()->withErrors([
