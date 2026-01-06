@@ -12,10 +12,10 @@
                 <a class="nav-link" href="/jual">JUAL</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">TOKO</a>
+                <a class="nav-link" href="/index">TOKO</a>
             </li>
         </ul>
 
-        <a href="#" class="btn btn-outline-success">Login</a>
+        <a href="/login" class="btn btn-outline-success">Log out</a>
     </div>
 </nav>

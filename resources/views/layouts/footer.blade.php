@@ -27,11 +27,13 @@
             <div class="col-md-3 mb-4">
                 <h6 class="footer-title">Kontak</h6>
                 <ul class="footer-list">
-                    <li>📞 +62 812-3456-7890</li>
-                    <li>✉ info@ecowaste.id</li>
-                    <li>📍 Jakarta, Indonesia</li>
+                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/"> karel</a></li>
+                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/amrirasyid01"> amrirasyid01</a></li>
+                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/"> faudan</a></li>
+                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/"> khanza</a></li>
+                    <li><i class="fab fa-instagram"></i><a href="https://www.instagram.com/"> tristan</a></li>
                 </ul>
-            </div>
+            </div> 
 
             <!-- Sosial Media -->
             <div class="col-md-3 mb-4">
@@ -40,7 +42,11 @@
                     <span class="social-icon">📸</span>
                     <span class="social-icon">📘</span>
                     <span class="social-icon">🐦</span>
-                </div>
+                </div><br>
+                <ul class="footer-list">
+                    <li>✉ info@ecowaste.id</li>
+                    <li>📍 Yogyakarta, Indonesia</li>
+                </ul>
             </div>
 
         </div>

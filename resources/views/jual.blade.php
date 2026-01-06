@@ -6,7 +6,7 @@
             <div class= "row align-items-center">
                 <div class= "col-md-6">
                     <h1 class="hero-title">JUAL SAMPAH<br>DENGAN MUDAH</h1>
-                    <a href="#" class="btn btn-jual">Jual Sekarang</a>
+                    <a href="jual/form" class="btn btn-jual">Jual Sekarang</a>
             </div>
             <div class="col-md-6">
                 <div class= "stats-card">
