@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('jual_sampah', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->enum('jenis_sampah', ['Plastik', 'Logam', 'Kertas', 'Kaca', 'Organik']);
             $table->decimal('berat', 8, 2);
             $table->decimal('total_harga', 12, 2);

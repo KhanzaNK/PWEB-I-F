@@ -22,7 +22,7 @@
                         <div class="col-md-3 mb-4">
                             <div class="card h-100">
                                 <img
-                                    src="{{ asset('storage/'.$p->gambar) }}"
+                                    src="{{ asset('storage/'.$p->foto) }}"
                                     class="card-img-top"
                                     style="height:160px; object-fit:cover;"
                                 >
@@ -47,7 +47,6 @@
                 </div>
             @endforeach
 
-            <!-- ================= TOMBOL TAMBAH PRODUK ================= -->
             <div class="text-center my-4">
                 <a href="{{ route('jual.form') }}"
                    class="btn btn-primary btn-lg px-5">
@@ -67,22 +66,25 @@
 
                 @forelse($cart as $id => $item)
                     @php
-                        $subtotal = $item['harga'] * $item['qty'];
+                        $nama = $item['nama'] ?? 'Produk';
+                        $harga = $item['harga'] ?? 0;
+                        $qty = $item['qty'] ?? 1;
+                        $subtotal = $harga * $qty;
                         $total += $subtotal;
                     @endphp
 
                     <div class="bg-white p-2 rounded mb-2">
-                        <strong>{{ Str::limit($item['nama'], 20) }}</strong>
+                        <strong>{{ Str::limit($nama, 20) }}</strong>
 
                         <p class="text-success mb-1">
-                            Rp {{ number_format($item['harga']) }}
+                            Rp {{ number_format($harga) }}
                         </p>
 
                         <div class="d-flex align-items-center gap-2">
                             <a href="{{ route('cart.decrease', $id) }}"
                                class="btn btn-outline-secondary btn-sm">−</a>
 
-                            <span>{{ $item['qty'] }}</span>
+                            <span>{{ $qty }}</span>
 
                             <a href="{{ route('cart.increase', $id) }}"
                                class="btn btn-outline-secondary btn-sm">+</a>
@@ -104,7 +106,6 @@
                     </strong>
                 </div>
 
-                <!-- ================= CHECKOUT ================= -->
                 @if(count($cart) > 0)
                     <form action="{{ route('cart.checkout') }}" method="POST">
                         @csrf
@@ -123,7 +124,6 @@
                         {{ session('success') }}
                     </div>
                 @endif
-
             </div>
         </div>
 
