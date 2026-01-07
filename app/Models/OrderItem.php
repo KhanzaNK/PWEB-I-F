@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\JualProduk;
+use App\Models\Order;
 
 class OrderItem extends Model
 {
@@ -17,6 +19,11 @@ class OrderItem extends Model
         'qty',
         'subtotal',
     ];
+
+    public function produk()
+    {
+        return $this->belongsTo(JualProduk::class, 'produk_id');
+    }
 
     public function order()
     {
