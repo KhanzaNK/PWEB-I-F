@@ -139,7 +139,9 @@
         </a>
     </div>
 </div>
-<div class="row mt-4 g-3">
+
+<h6 class="fw-semibold text-muted mb-2">📊 Ringkasan Penjualan Sampah</h6>
+<div class="row g-3 mb-4">
     <div class="col-md-4">
         <div class="card p-3">
             <small class="text-muted">Total Sampah Dijual</small>
@@ -164,18 +166,19 @@
     </div>
 </div>
 
-<div class="row mt-4 g-3">
+<h6 class="fw-semibold text-muted mb-2">📦 Ringkasan Penjualan Produk</h6>
+<div class="row g-3 mb-4">
     <div class="col-md-4">
         <div class="card p-3">
-            <small class="text-muted">Total Stok Produk</small>
+            <small class="text-muted">Sisa Stok Produk</small>
             <h4 class="fw-bold">{{ $totaljual ?? 0 }} unit</h4>
         </div>
     </div>
 
     <div class="col-md-4">
         <div class="card p-3">
-            <small class="text-muted">Total Transaksi</small>
-            <h4 class="fw-bold">{{ $totalproduk ?? 0 }}</h4>
+            <small class="text-muted">Total Produk Terjual</small>
+            <h4 class="fw-bold">{{ $totalBarangTerjual ?? 0 }}</h4>
         </div>
     </div>
 
@@ -239,6 +242,13 @@
             <div class="d-flex align-items-center gap-3">
                 {{-- ICON JENIS --}}
                 <div class="fs-3">
+                @switch($itemproduk->jenis_produk)
+                    @case('Kerajinan Daur Ulang')♻️@break
+                    @case('Tas Daur Ulang')🎒@break
+                    @case('Furniture Daur Ulang')🪑@break
+                    @case('Aksesoris')💍@break
+                    @default📦
+                @endswitch
                 </div>
 
                 {{-- INFO --}}
@@ -259,10 +269,7 @@
             </span>
         </div>
     @empty
-        <div class="text-center text-muted py-4">
-            <p class="mb-1">Belum ada riwayat penjualan</p>
-            <small>Mulai jual sampah untuk melihat riwayat di sini</small>
-        </div>
+    
     @endforelse
 </div>
 

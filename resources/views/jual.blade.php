@@ -21,9 +21,7 @@
                     <div class= "mb-4">
                         <div class= "d-flex justify-content-between align-items-center">
                             <span>Pembelian Sampah</span>
-                            <div>
-                                <span>100 KG</span>
-                            </div>
+                            <span class= "stats-number">100 KG</span>
                         </div>
                     </div>
 
